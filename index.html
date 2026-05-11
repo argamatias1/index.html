@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Centro Cultural - Talleres</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      min-height: 100vh;
+      padding: 30px;
+      color: white;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header {
+      background: linear-gradient(90deg, #7c3aed, #2563eb);
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 55px;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .talleres {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 30px;
+      transition: 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      top: -80px;
+      right: -80px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+      font-size: 30px;
+      color: #38bdf8;
+    }
+
+    .card p {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .formulario {
+      padding: 40px;
+    }
+
+    .formulario h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    .formulario p {
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .input-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #e2e8f0;
+    }
+
+    input,
+    select {
+      padding: 15px;
+      border: none;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input::placeholder {
+      color: #cbd5e1;
+    }
+
+    input:focus,
+    select:focus {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.02);
+    }
+
+    select option {
+      color: black;
+    }
+
+    button {
+      width: 100%;
+      padding: 18px;
+      margin-top: 30px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      box-shadow: 0px 10px 20px rgba(59,130,246,0.4);
+    }
+
+    .alumnos {
+      padding: 40px;
+    }
+
+    .alumnos h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    #buscador {
+      margin-bottom: 25px;
+    }
+
+    .lista-alumnos {
+      display: grid;
+      gap: 15px;
+    }
+
+    .alumno {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 18px;
+      border-left: 5px solid #38bdf8;
+      animation: aparecer 0.4s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 700px) {
+      header h1 {
+        font-size: 38px;
+      }
+
+      .formulario h2,
+      .alumnos h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>🎨 Nuestros Talleres</h1>
+      <p>Centro Cultural Malvinas - Arte y Creatividad</p>
+    </header>
+
+    <section class="talleres">
+
+      <div class="card">
+        <h2>🏺 Taller de Cerámica</h2>
+        <p><b>Profesor:</b> Martina Elena Ríos</p>
+        <p><b>Clases:</b> Martes y Jueves</p>
+        <p><b>Horario:</b> 18:00 - 20:00</p>
+        <p><b>Inscriptos:</b> 10/15</p>
+      </div>
+
+      <div class="card">
+        <h2>🎨 Taller de Pintura</h2>
+        <p><b>Profesor:</b> Mariano Herrera</p>
+        <p><b>Clases:</b> Lunes y Miércoles</p>
+        <p><b>Horario:</b> 17:00 - 19:00</p>
+        <p><b>Inscriptos:</b> 0/20</p>
+      </div>
+
+    </section>
+
+    <section class="formulario">
+
+      <h2>📝 Formulario de Inscripción</h2>
+
+      <p>Complete todos los campos para registrarse en un taller.</p>
+
+      <form id="formulario">
+
+        <div class="form-grid">
+
+          <div class="input-box">
+            <label>Nombre</label>
+            <input type="text" id="nombre" placeholder="Ingrese su nombre" required>
+          </div>
+
+          <div class="input-box">
+            <label>Apellido</label>
+            <input type="text" id="apellido" placeholder="Ingrese su apellido" required>
+          </div>
+
+          <div class="input-box">
+            <label>DNI</label>
+            <input type="number" id="dni" placeholder="12345678" required>
+          </div>
+
+          <div class="input-box">
+            <label>Edad</label>
+            <input type="number" id="edad" placeholder="19" required>
+          </div>
+
+          <div class="input-box">
+            <label>Teléfono</label>
+            <input type="tel" id="telefono" placeholder="11 1234-5678" required>
+          </div>
+
+          <div class="input-box">
+            <label>Taller</label>
+
+            <select id="taller" required>
+              <option value="">Seleccionar taller</option>
+              <option>Taller de Cerámica</option>
+              <option>Taller de Pintura</option>
+            </select>
+          </div>
+
+        </div>
+
+        <button type="submit">
+          INSCRIBIRSE
+        </button>
+
+      </form>
+
+    </section>
+
+    <section class="alumnos">
+
+      <h2>👨‍🎓 Alumnos Inscriptos</h2>
+
+      <input type="text" id="buscador"
+        placeholder="Buscar por nombre, apellido o DNI...">
+
+      <div class="lista-alumnos" id="listaAlumnos">
+        <p>No hay alumnos inscriptos aún.</p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script>
+
+    const formulario = document.getElementById('formulario');
+    const listaAlumnos = document.getElementById('listaAlumnos');
+    const buscador = document.getElementById('buscador');
+
+    let alumnos = [];
+
+    formulario.addEventListener('submit', function (e) {
+
+      e.preventDefault();
+
+      const alumno = {
+        nombre: document.getElementById('nombre').value,
+        apellido: document.getElementById('apellido').value,
+        dni: document.getElementById('dni').value,
+        edad: document.getElementById('edad').value,
+        telefono: document.getElementById('telefono').value,
+        taller: document.getElementById('taller').value
+      };
+
+      alumnos.push(alumno);
+
+      mostrarAlumnos(alumnos);
+
+      formulario.reset();
+
+    });
+
+    function mostrarAlumnos(lista) {
+
+      listaAlumnos.innerHTML = '';
+
+      if (lista.length === 0) {
+        listaAlumnos.innerHTML = '<p>No hay alumnos inscriptos aún.</p>';
+        return;
+      }
+
+      lista.forEach(alumno => {
+
+        listaAlumnos.innerHTML += `
+        
+        <div class="alumno">
+          <p><b>${alumno.nombre} ${alumno.apellido}</b></p>
+          <p>📄 DNI: ${alumno.dni}</p>
+          <p>🎂 Edad: ${alumno.edad}</p>
+          <p>📞 Teléfono: ${alumno.telefono}</p>
+          <p>🎨 Taller: ${alumno.taller}</p>
+        </div>
+        
+        `;
+
+      });
+
+    }
+
+    buscador.addEventListener('input', function () {
+
+      const texto = buscador.value.toLowerCase();
+
+      const filtrados = alumnos.filter(alumno =>
+
+        alumno.nombre.toLowerCase().includes(texto) ||
+        alumno.apellido.toLowerCase().includes(texto) ||
+        alumno.dni.includes(texto)
+
+      );
+
+      mostrarAlumnos(filtrados);
+
+    });
+
+  </script>
+
+</body>
+
+</html>
